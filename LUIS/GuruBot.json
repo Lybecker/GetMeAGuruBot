@@ -1,0 +1,355 @@
+{
+  "luis_schema_version": "1.3.0",
+  "name": "GuruBot",
+  "desc": "",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [
+    {
+      "name": "Technologies"
+    },
+    {
+      "name": "Alias"
+    }
+  ],
+  "composites": [],
+  "bing_entities": [
+    "datetime",
+    "geography",
+    "encyclopedia"
+  ],
+  "actions": [],
+  "model_features": [
+    {
+      "name": "TechnologyNames",
+      "mode": true,
+      "words": "windows,office 365,azure,devops,game dev,web dev,machine learning,iot,media,high scale data",
+      "activated": true
+    }
+  ],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "july 14th 2016",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "on july 14th 2016",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "it took place on may 11th",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "on august 7th",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "on july 14th 2014",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "i worked with them on 1.1.203",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "the work took place in london",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "most of the work was in paris",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "belgium",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "in tokyo",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "usa",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "we worked on iot with intel on may 15th 2007",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "the project was about azure and using devops",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 7,
+          "endPos": 7
+        }
+      ]
+    },
+    {
+      "text": "we worked on media on windows with cisco",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 5,
+          "endPos": 5
+        }
+      ]
+    },
+    {
+      "text": "we levereged iot azure media and windows using devops",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 2,
+          "endPos": 2
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 4,
+          "endPos": 4
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 6,
+          "endPos": 6
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 8,
+          "endPos": 8
+        }
+      ]
+    },
+    {
+      "text": "my alias is orzohar",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "my alias is mambojambo",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "my alias is sochania",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "the alias is klmntrp",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "i am orzohar",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "i'm snadella",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "im jkroling",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 1,
+          "endPos": 1
+        }
+      ]
+    },
+    {
+      "text": "i am jdsal",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "i'm rpekin and i worked with ge on iot solution on january 14th 2012. most of the work took place in italy",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 10,
+          "endPos": 10
+        },
+        {
+          "entity": "Alias",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "i am kkcohen",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 2,
+          "endPos": 2
+        }
+      ]
+    },
+    {
+      "text": "my alias is njudah",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Alias",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "we worked on web dev",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "it was an office 365 project",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 3,
+          "endPos": 3
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 4,
+          "endPos": 4
+        }
+      ]
+    },
+    {
+      "text": "we worked on o365 with ibm",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 3,
+          "endPos": 3
+        }
+      ]
+    },
+    {
+      "text": "the project i worked on was for honda using azure, machine learning, iot. it was a hackfest in texas we did july 14th 2001",
+      "intent": "None",
+      "entities": [
+        {
+          "entity": "Technologies",
+          "startPos": 9,
+          "endPos": 9
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 11,
+          "endPos": 11
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 12,
+          "endPos": 12
+        },
+        {
+          "entity": "Technologies",
+          "startPos": 14,
+          "endPos": 14
+        }
+      ]
+    }
+  ]
+}
