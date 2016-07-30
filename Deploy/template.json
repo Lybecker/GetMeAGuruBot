@@ -1,0 +1,124 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "databaseAccounts_gurubotfb_name": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "databaseAccounts_gurubotfb_name_1": {
+            "defaultValue": "gurubotfb",
+            "type": "String"
+        },
+        "components_gurubot_name": {
+            "defaultValue": "gurubot",
+            "type": "String"
+        },
+        "serverfarms_ServicePlan3032d163_ad1d_name": {
+            "defaultValue": "ServicePlan3032d163-ad1d",
+            "type": "String"
+        },
+        "sites_gurubot_name": {
+            "defaultValue": "gurubot",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/773e2fb0-13ed-47a2-9f60-177d20388aa6/resourceGroups/GuruBot/providers/Microsoft.DocumentDB/databaseAccounts/gurubotfb'.",
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "kind": "GlobalDocumentDB",
+            "name": "[parameters('databaseAccounts_gurubotfb_name_1')]",
+            "apiVersion": "2015-04-08",
+            "location": "West US",
+            "tags": {},
+            "properties": {
+                "databaseAccountOfferType": "Standard",
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session",
+                    "maxIntervalInSeconds": 5,
+                    "maxStalenessPrefix": 100
+                },
+                "name": "[parameters('databaseAccounts_gurubotfb_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/773e2fb0-13ed-47a2-9f60-177d20388aa6/resourceGroups/GuruBot/providers/microsoft.insights/components/gurubot'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_gurubot_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "Central US",
+            "tags": {
+                "hidden-link:/subscriptions/773e2fb0-13ed-47a2-9f60-177d20388aa6/resourceGroups/GuruBot/providers/Microsoft.Web/sites/gurubot": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[parameters('components_gurubot_name')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/773e2fb0-13ed-47a2-9f60-177d20388aa6/resourceGroups/GuruBot/providers/Microsoft.Web/serverfarms/ServicePlan3032d163-ad1d'.",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "size": "S1",
+                "family": "S",
+                "capacity": 1
+            },
+            "name": "[parameters('serverfarms_ServicePlan3032d163_ad1d_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "South Central US",
+            "properties": {
+                "name": "[parameters('serverfarms_ServicePlan3032d163_ad1d_name')]",
+                "numberOfWorkers": 1
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/773e2fb0-13ed-47a2-9f60-177d20388aa6/resourceGroups/GuruBot/providers/Microsoft.Web/sites/gurubot'.",
+            "type": "Microsoft.Web/sites",
+            "name": "[parameters('sites_gurubot_name')]",
+            "apiVersion": "2015-08-01",
+            "location": "South Central US",
+            "tags": {
+                "hidden-related:/subscriptions/773e2fb0-13ed-47a2-9f60-177d20388aa6/resourcegroups/GuruBot/providers/Microsoft.Web/serverfarms/ServicePlan3032d163-ad1d": "empty"
+            },
+            "properties": {
+                "name": "[parameters('sites_gurubot_name')]",
+                "hostNames": [
+                    "gurubot.azurewebsites.net"
+                ],
+                "enabledHostNames": [
+                    "gurubot.azurewebsites.net",
+                    "gurubot.scm.azurewebsites.net"
+                ],
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_gurubot_name'),'.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    },
+                    {
+                        "name": "[concat(parameters('sites_gurubot_name'),'.scm.azurewebsites.net')]",
+                        "sslState": 0,
+                        "thumbprint": null,
+                        "ipBasedSslState": 0
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ServicePlan3032d163_ad1d_name'))]"
+            },
+            "resources": [],
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_ServicePlan3032d163_ad1d_name'))]"
+            ]
+        }
+    ]
+}

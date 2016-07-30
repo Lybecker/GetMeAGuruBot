@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿/*
+using Newtonsoft.Json;
 
 namespace GetMeAGuru
 {
-    public class Guru
+    internal class Guru
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
@@ -40,3 +41,4 @@ public class resources
 {
     public string url { get; set; }
 }
+*/

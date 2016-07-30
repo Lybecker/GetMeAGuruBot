@@ -1,0 +1,21 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "databaseAccounts_gurubotfb_name": {
+            "value": null
+        },
+        "databaseAccounts_gurubotfb_name_1": {
+            "value": null
+        },
+        "components_gurubot_name": {
+            "value": null
+        },
+        "serverfarms_ServicePlan3032d163_ad1d_name": {
+            "value": null
+        },
+        "sites_gurubot_name": {
+            "value": null
+        }
+    }
+}
