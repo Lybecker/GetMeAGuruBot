@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GetMeAGuru.Dialogs
 {
+
     [Serializable()]
     public class IntroDialogChain : IDialog<object>
     {
@@ -21,6 +22,8 @@ namespace GetMeAGuru.Dialogs
         bool selected = false;
         private async Task conversationStarted(IDialogContext context, IAwaitable<string> s)
         {
+            Engagement eng = new Engagement();
+
             await context.PostAsync("Welcome! I am the 'Get a Guru' bot. How can I help you?");
             var dialog = Chain.From(() => new QueryDialog())
                 .ContinueWith<string, string>
