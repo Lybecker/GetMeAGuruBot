@@ -1,0 +1,18 @@
+{
+  "id": "10",
+  "alias": "stmich",
+  "title": "Introduction to GuruBot",
+  "description": "Stijn explains in full detail why the GuruBot is so awesome.",
+  "location": "Redmond",
+  "company": "Microsoft",
+  "date": "2016-06-30",
+  "tech": [
+    "azure",
+    "bot-framework",
+    "documentdb"
+  ],
+  "resources": [
+    "https://github.com/Lybecker/GetMeAGuruBot",
+    "https://gurubot.azurewebsites.net"
+  ]
+}

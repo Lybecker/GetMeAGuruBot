@@ -26,19 +26,20 @@ namespace GetMeAGuru
         }
 
 
-        private static async Task pushDocument(Engagement engagementObj) { 
+        private static async Task pushDocument(Engagement engagementObj) {
             try
             {
                 var collectionLink = UriFactory.CreateDocumentCollectionUri(databaseId, collectionId);
 
-            using (client = new DocumentClient(new Uri(endpointUrl), authorizationKey))
-            {
-                Init();
+                using (client = new DocumentClient(new Uri(endpointUrl), authorizationKey))
+                {
+                    Init();
 
-                Document created = await client.CreateDocumentAsync(collectionLink, engagementObj);
-                Console.WriteLine(created);
+                    Document created = await client.CreateDocumentAsync(collectionLink, engagementObj);
+                    Console.WriteLine(created);
+                }
             }
-
+            catch { }
         }
 
         private static void Init()
