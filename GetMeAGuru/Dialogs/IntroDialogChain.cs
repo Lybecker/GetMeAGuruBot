@@ -27,11 +27,11 @@ namespace GetMeAGuru.Dialogs
                 (async (ctx, Action) =>
                 {
                     selectedAction = await Action;
-                    if (selectedAction == "query")
+                    if (selectedAction == "Search for a Guru")
                     {
                         return new TechnologyDialog();
                     }
-                    else if (selectedAction == "injest")
+                    else if (selectedAction == "Add Engagement")
                     {
                         return new AddGuruDialog();
                     }
@@ -60,6 +60,9 @@ namespace GetMeAGuru.Dialogs
         private async Task ProcessFinished(IDialogContext ctx, IAwaitable<string> dt)
         {
             await ctx.PostAsync($"{selectedAction} {selectedArea} {selectedTechnologyPath} {selectedLevel}");
+            var client = new SearchClient();
+
+            client.Search(selectedTechnologyPath);
             ctx.Done("Over");
         }
     }

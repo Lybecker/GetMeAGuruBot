@@ -20,21 +20,38 @@ namespace GetMeAGuru.Dialogs
             await TechnologySelection(context);
         }
 
+        Attachment attachment;
+
         private async Task TechnologySelection(IDialogContext context)
         {
             var message = context.MakeMessage();
             message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            List<Attachment> attachments = new List<Attachment>();
+            List<Attachment> attachements = new List<Attachment>();
             foreach (var item in Technologies)
             {
                 var actions = new List<CardAction>();
-                actions.Add(AttachmentCreation.CreateCardAction("Select this Path", item.ToString()));
-                var attachment = AttachmentCreation.CreateHeroCardAttachment(item.ToString(), null, null, "https://azurecomcdn.azureedge.net/cvt-9c42e10c78bceeb8622e49af8d0fe1a20cd9ca9f4983c398d0b356cf822d8844/images/shared/social/azure-icon-250x250.png", actions);
-                attachments.Add(attachment);
+                actions.Add(AttachmentCreation.CreateCardAction(item.ToString(), item.ToString()));
+                attachment = AttachmentCreation.CreateHeroCardAttachment(item.ToString(), null, null, null, actions);
+                attachements.Add(attachment);
             }
-            message.Attachments = attachments;
+            message.Attachments = attachements;
+            await context.PostAsync("Select a technology path");
             await context.PostAsync(message);
-            context.Wait(TechnologySelected);
+
+            //var message = context.MakeMessage();
+            //message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            //List<Attachment> attachements = new List<Attachment>();
+            //var actions = new List<CardAction>();
+            //foreach (var item in Technologies)
+            //{
+            //    actions.Add(AttachmentCreation.CreateCardAction("Select this Path", item.ToString()));
+            //    var attachment = AttachmentCreation.CreateHeroCardAttachment(item.ToString(), null, null, null, actions);
+            //    attachements.Add(attachment);
+            //}
+            //message.Attachments = attachements;
+            //await context.PostAsync("Select a technology path");
+            //await context.PostAsync(message);
+            //context.Wait(TechnologySelected);
         }
 
         public virtual async Task TechnologySelected(IDialogContext context, IAwaitable<IMessageActivity> argument)

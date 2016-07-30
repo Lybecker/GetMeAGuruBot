@@ -10,9 +10,9 @@ namespace GetMeAGuru.Dialogs
     [Serializable()]
     public class AddGuruDialog : IDialog<string>
     {
-        public Task StartAsync(IDialogContext context)
+        public async Task StartAsync(IDialogContext context)
         {
-            throw new NotImplementedException();
+            await context.PostAsync("hey");
         }
     }
 }

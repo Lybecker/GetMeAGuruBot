@@ -24,8 +24,8 @@ namespace GetMeAGuru.Dialogs
             message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             List<Attachment> attachements = new List<Attachment>();
             var actions = new List<CardAction>();
-            actions.Add(AttachmentCreation.CreateCardAction("Search for a Guru", "query"));
-            actions.Add(AttachmentCreation.CreateCardAction("Become a Guru", "ingest"));
+            actions.Add(AttachmentCreation.CreateCardAction("Search for a Guru", "Search for a Guru"));
+            actions.Add(AttachmentCreation.CreateCardAction("Add Engagement", "Add Engagement"));
             var attachment = AttachmentCreation.CreateHeroCardAttachment("Here is what you can do", null, null, null, actions);
             attachements.Add(attachment);
             message.Attachments = attachements;
