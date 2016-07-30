@@ -138,7 +138,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\AddGuruDialog.cs" />
-    <Compile Include="Dialogs\AeriaDialog.cs" />
+    <Compile Include="Dialogs\AreaDialog.cs" />
     <Compile Include="Dialogs\IntroDialogChain.cs" />
     <Compile Include="Dialogs\LevelDialog.cs" />
     <Compile Include="Dialogs\QueryDialog.cs" />

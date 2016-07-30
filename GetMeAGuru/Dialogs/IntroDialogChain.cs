@@ -18,7 +18,7 @@ namespace GetMeAGuru.Dialogs
         {
             context.Wait<string>(conversationStarted);
         }
-
+        bool selected = false;
         private async Task conversationStarted(IDialogContext context, IAwaitable<string> s)
         {
             await context.PostAsync("Welcome! I am the 'Get a Guru' bot. How can I help you?");
@@ -36,7 +36,8 @@ namespace GetMeAGuru.Dialogs
                         return new AddGuruDialog();
                     }
                     else
-                        return null;
+                        return Chain.Return(selectedTechnologyPath);
+
                 }).ContinueWith<string, string>
                 (async (ctx, TechnologyPath) =>
                 {
@@ -46,7 +47,7 @@ namespace GetMeAGuru.Dialogs
                 (async (ctx, Level) =>
                 {
                     selectedLevel = await Level;
-                    return new AeriaDialog();
+                    return new AreaDialog();
                 }).ContinueWith<string, string>
                 (async (ctx, Aeria) =>
                 {
@@ -59,11 +60,29 @@ namespace GetMeAGuru.Dialogs
 
         private async Task ProcessFinished(IDialogContext ctx, IAwaitable<string> dt)
         {
-            await ctx.PostAsync($"{selectedAction} {selectedArea} {selectedTechnologyPath} {selectedLevel}");
-            var client = new SearchClient();
+            await ctx.PostAsync($"Technology: {selectedAction} \n\nLevel: {selectedLevel} \n\nArea: {selectedArea}");
+            var message = await dt;
+            PromptDialog.Confirm(ctx, ConfirmAsync, "Are these what you are looking for?", "Sorry, didn't get that", 3, PromptStyle.PerLine);       
+        }
 
-            client.Search(selectedTechnologyPath);
-            ctx.Done("Over");
+        public async Task ConfirmAsync(IDialogContext context, IAwaitable<bool> argument)
+        {
+            var confirm = await argument;
+            if (confirm)
+            {
+                await context.PostAsync("Available TEs:");
+                var client = new SearchClient();
+                var result = client.Search(selectedAction);
+                string results=null;
+                foreach (var item in result)
+                {
+                   results+=($"\n\n{item.alias}@microsoft.com");
+                }
+                await context.PostAsync(results);
+            }
+            else
+                await context.PostAsync("OK");
+            context.Done("Over");
         }
     }
 }

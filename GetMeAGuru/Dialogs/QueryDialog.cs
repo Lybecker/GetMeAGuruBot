@@ -12,7 +12,7 @@ namespace GetMeAGuru.Dialogs
     [Serializable()]
     public class QueryDialog : IDialog<string>
     {
- 
+
         public async Task StartAsync(IDialogContext context)
         {
             await SelectAction(context);
@@ -26,7 +26,7 @@ namespace GetMeAGuru.Dialogs
             var actions = new List<CardAction>();
             actions.Add(AttachmentCreation.CreateCardAction("Search for a Guru", "Search for a Guru"));
             actions.Add(AttachmentCreation.CreateCardAction("Add Engagement", "Add Engagement"));
-            var attachment = AttachmentCreation.CreateHeroCardAttachment("Here is what you can do", null, null, null, actions);
+            var attachment = AttachmentCreation.CreateHeroCardAttachment("How can I help you today?", null, null, null, actions);
             attachements.Add(attachment);
             message.Attachments = attachements;
             await context.PostAsync(message);
@@ -38,7 +38,6 @@ namespace GetMeAGuru.Dialogs
             var message = await argument;
             context.Done(message.Text);
         }
-        
-    
+
     }
 }

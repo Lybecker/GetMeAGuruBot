@@ -25,33 +25,18 @@ namespace GetMeAGuru.Dialogs
         private async Task TechnologySelection(IDialogContext context)
         {
             var message = context.MakeMessage();
-            message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            message.AttachmentLayout = AttachmentLayoutTypes.List;
             List<Attachment> attachements = new List<Attachment>();
+            var actions = new List<CardAction>();
             foreach (var item in Technologies)
             {
-                var actions = new List<CardAction>();
                 actions.Add(AttachmentCreation.CreateCardAction(item.ToString(), item.ToString()));
-                attachment = AttachmentCreation.CreateHeroCardAttachment(item.ToString(), null, null, null, actions);
-                attachements.Add(attachment);
             }
+            attachment = AttachmentCreation.CreateHeroCardAttachment("Select a technology path", null, null, null, actions);
+            attachements.Add(attachment);
             message.Attachments = attachements;
-            await context.PostAsync("Select a technology path");
             await context.PostAsync(message);
-
-            //var message = context.MakeMessage();
-            //message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            //List<Attachment> attachements = new List<Attachment>();
-            //var actions = new List<CardAction>();
-            //foreach (var item in Technologies)
-            //{
-            //    actions.Add(AttachmentCreation.CreateCardAction("Select this Path", item.ToString()));
-            //    var attachment = AttachmentCreation.CreateHeroCardAttachment(item.ToString(), null, null, null, actions);
-            //    attachements.Add(attachment);
-            //}
-            //message.Attachments = attachements;
-            //await context.PostAsync("Select a technology path");
-            //await context.PostAsync(message);
-            //context.Wait(TechnologySelected);
+            context.Wait(TechnologySelected);
         }
 
         public virtual async Task TechnologySelected(IDialogContext context, IAwaitable<IMessageActivity> argument)

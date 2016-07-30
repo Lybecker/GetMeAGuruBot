@@ -10,7 +10,7 @@ using GetMeAGuru.Helpers;
 namespace GetMeAGuru.Dialogs
 {
     [Serializable()]
-    public class AeriaDialog : IDialog<string>
+    public class AreaDialog : IDialog<string>
     {
         public async Task StartAsync(IDialogContext context)
         {
@@ -20,7 +20,7 @@ namespace GetMeAGuru.Dialogs
         private async Task SelectPath(IDialogContext context)
         {
             var message = context.MakeMessage();
-            await context.PostAsync("Please enter the city/location you want");
+            await context.PostAsync("Cool! Now type the City/Location you want to search.\n\n(Optional, type 'none' for no preference)");
             context.Wait(ActionSelected);
 
         }
