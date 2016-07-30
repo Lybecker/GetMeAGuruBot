@@ -29,7 +29,7 @@ namespace GetMeAGuru.Helpers
         }
 
         public static Attachment CreateHeroCardAttachment(string actionTitle, string actionText,
-           string actionSubtitle, string picURL, IEnumerable<CardAction> actions)
+           string actionSubtitle, List<CardImage> ImagesList, List<CardAction> actions)
         {
             var card = new HeroCard
             {
@@ -39,14 +39,8 @@ namespace GetMeAGuru.Helpers
                 card.Text = actionText;
             if (actionSubtitle != null)
                 card.Subtitle = actionSubtitle;
-
-            card.Images = new List<CardImage>{
-                                new CardImage
-                                {
-                                    Url = picURL
-                                }};
-            card.Buttons = new List<CardAction>(actions);
-
+            card.Images = ImagesList;
+            card.Buttons = actions;
             return card.ToAttachment();
         }
 

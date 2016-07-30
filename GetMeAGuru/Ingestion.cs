@@ -18,7 +18,7 @@ namespace GetMeAGuru
     {
 
         private static readonly string EndpointUri = ConfigurationManager.AppSettings["EndPointUrl"];
-        private static readonly string PrimaryKey = ConfigurationManager.AppSettings["DBAuthorizationKey"];
+        private static readonly string PrimaryKey = ConfigurationManager.AppSettings["DBAuthorizationKey"];        
         private static readonly string databaseId = ConfigurationManager.AppSettings["DatabaseId"];
         private static readonly string collectionId = ConfigurationManager.AppSettings["CollectionId"];
 
@@ -56,14 +56,14 @@ namespace GetMeAGuru
         }
 
 
-        private async Task PushDocument()
+        public async Task PushDocument()
         {
             this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
-            await this.CreateDatabaseIfNotExists("GuruDB");
+            await this.CreateDatabaseIfNotExists(databaseId);
 
             // ADD THIS PART TO YOUR CODE
-            await this.CreateDocumentCollectionIfNotExists("GuruDB", "gurus");
+            await this.CreateDocumentCollectionIfNotExists(databaseId, collectionId);
 
 
             // ADD THIS PART TO YOUR CODE
@@ -108,7 +108,7 @@ namespace GetMeAGuru
                 },
             };
 
-            await this.CreateGuruDocumentIfNotExists("GuruDB", "gurus", guru);
+            await this.CreateGuruDocumentIfNotExists(databaseId, collectionId, guru);
             
         }
 
@@ -134,6 +134,8 @@ namespace GetMeAGuru
                     throw;
                 }
             }
+            catch ( Exception ex)
+            { ex = ex; }
         }
 
 
