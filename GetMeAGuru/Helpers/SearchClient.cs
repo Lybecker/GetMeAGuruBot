@@ -62,6 +62,10 @@ namespace GetMeAGuru
 
     public class SearchGuru
     {
+        public SearchGuru()
+        {
+            techs= new List<string>();
+        }
         public string alias { get; set; }
         public IList<string> techs { get; set; }
     }

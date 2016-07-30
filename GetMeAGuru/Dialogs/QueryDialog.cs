@@ -36,6 +36,11 @@ namespace GetMeAGuru.Dialogs
         public virtual async Task ActionSelected(IDialogContext context, IAwaitable<IMessageActivity> argument)
         {
             var message = await argument;
+            if(message.Text== "Add Engagement")
+            {
+                await context.PostAsync("Tell me about your engagement. \n\nType something like:  \n\nMy alias is orzohar, I've been working on iot and Azure in Italy with IBM in a hackfest on January 12th 2001");
+                message = await argument;
+            }
             context.Done(message.Text);
         }
 

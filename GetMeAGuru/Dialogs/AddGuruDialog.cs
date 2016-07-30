@@ -13,27 +13,36 @@ namespace GetMeAGuru.Dialogs
     [LuisModel("29ed0af1-c4d4-4c79-ab48-20e0bfa765b5", "bfb7c47fa6b84ed8b71a134b73c47ced")]
     [Serializable()]
     public class AddGuruDialog : LuisDialog<string>
-    {        
+    {
+
         [LuisIntent("")]
         [LuisIntent("None")]
         public async Task None(IDialogContext context, LuisResult result)
         {
-            await context.PostAsync("Enter sth");
             var message = context.MakeMessage();
             List<string> tech = new List<string>();
             string location = "";
             string alias = null;
             string company = "";
             string date = "";
+            //EntityRecommendation res;
+            //IntentHandler what;
             
+            //if (result.TryFindEntity("sochania", out res))
+            //{
+            //    alias = res.Entity;
+            //}
+            //var ress= this.handlerByIntent.TryGetValue(alias, out what);
+
             foreach (var e in result.Entities)
             {
                 if (e.Type == "Technologies")
                 {
                     tech.Add(e.Entity);
-                } else if (e.Type == "Alias")
+                }
+                else if (e.Type == "Alias")
                 {
-                    alias = e.Entity;                    
+                    alias = e.Entity;
                 }
                 else if (e.Type == "builtin.datetime.date")
                 {
@@ -46,7 +55,7 @@ namespace GetMeAGuru.Dialogs
                 else if (e.Type == "builtin.encyclopedia.organization.organization")
                 {
                     company = e.Entity;
-                }                
+                }
             }
 
             if (alias != null)
@@ -54,31 +63,23 @@ namespace GetMeAGuru.Dialogs
                 SearchClient sc = new SearchClient();
                 SearchGuru eng = new SearchGuru();
                 eng.alias = alias;
-                eng.techs.Concat(tech);
+                foreach (var item in tech)
+                {
+                    eng.techs.Add(item);
+                }
                 sc.Add(eng);
             }
 
-             message.Text = $"Sounds like a cool engagment! \n\n" 
-                + "Alias: " + alias + "\n\n" 
-                + "Location: " + location + "\n\n" 
-                + "Company: " + company + "\n\n"
-                + "Technologies used: " + string.Join(", ", tech) + "\n\n"
-                + "Engagment Logged!";
+            message.Text = $"Sounds like a cool engagment! \n\n"
+               + "Alias: " + alias + "\n\n"
+               + "Location: " + location + "\n\n"
+               + "Company: " + company + "\n\n"
+               + "Technologies used: " + string.Join(", ", tech) + "\n\n"
+               + "Engagment Logged!";
 
             await context.PostAsync(message.Text);
             context.Wait(MessageReceived);
-            context.Done(message.Text);
+           // context.Done(message.Text);
         }
-
-/*
-        private void StoreEngagmentData(LuisResult result)
-        {
-            foreach(var e in result.Entities)
-
-    {
-
-            }
-            
-        }*/
     }
 }
