@@ -37,7 +37,6 @@ namespace GetMeAGuru.Dialogs
                     }
                     else
                         return Chain.Return(selectedTechnologyPath);
-
                 }).ContinueWith<string, string>
                 (async (ctx, TechnologyPath) =>
                 {

@@ -147,11 +147,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Guru.cs" />
+    <Compile Include="Helpers\Guru.cs" />
     <Compile Include="Helpers\AttachmentCreation.cs" />
     <Compile Include="Ingestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchClient.cs" />
+    <Compile Include="Helpers\SearchClient.cs" />
     <Compile Include="test.cs" />
   </ItemGroup>
   <ItemGroup>
