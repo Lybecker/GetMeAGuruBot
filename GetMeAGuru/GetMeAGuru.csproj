@@ -130,7 +130,6 @@
   <ItemGroup>
     <Content Include="default.htm" />
     <Content Include="Global.asax" />
-    <Content Include="HtmlPage1.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -148,6 +147,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Guru.cs" />
     <Compile Include="Helpers\AttachmentCreation.cs" />
     <Compile Include="Ingestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
