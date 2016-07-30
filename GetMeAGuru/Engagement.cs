@@ -2,7 +2,7 @@
 
 namespace GetMeAGuru
 {
-    public class Engagements
+    public class Engagement
     {
         public string Id { get; set; }
         public string Alias { get; set; }
