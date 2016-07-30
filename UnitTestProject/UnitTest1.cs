@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using GetMeAGuru;
 
 namespace UnitTestProject
 {
@@ -10,6 +11,14 @@ namespace UnitTestProject
         public void TestMethod1()
         {
             Assert.IsTrue(true);
+        }
+
+        [TestMethod]
+        public void TestSearch()
+        {
+            var client = new SearchClient();
+
+            var result = client.Search(string.Empty, "azure", "Redmond", string.Empty);
         }
     }
 }
