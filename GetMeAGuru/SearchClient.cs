@@ -22,13 +22,13 @@ namespace GetMeAGuru
 
             var sp = new SearchParameters();
 
-            //if (!String.IsNullOrEmpty(filter))
-            //{
-            //    sp.Filter = filter;
-            //}
+            if (!String.IsNullOrEmpty(tech))
+            {
+                sp.Filter = @"tech eq '{tech}' and location eg '{location}'"; // and level eg '{level}'";
+            }
 
-            DocumentSearchResult<Engagements> response = indexClient.Documents.Search<Engagements>(searchText, sp);
-            foreach (SearchResult<Engagements> result in response.Results)
+            DocumentSearchResult<Engagement> response = indexClient.Documents.Search<Engagement>(searchText, sp);
+            foreach (SearchResult<Engagement> result in response.Results)
             {
                 Console.WriteLine(result.Document);
             }
