@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace GetMeAGuru.Dialogs
 {
+
     [Serializable()]
     public class IntroDialogChain : IDialog<object>
     {
@@ -31,7 +32,7 @@ namespace GetMeAGuru.Dialogs
                     {
                         return new TechnologyDialog();
                     }
-                    else if (selectedAction == "injest")
+                    else if (selectedAction == "ingest")
                     {
                         return new AddGuruDialog();
                     }
