@@ -13,6 +13,6 @@ namespace GetMeAGuru.Dialogs
         public Task StartAsync(IDialogContext context)
         {
             return null;
-        }
+        } 
     }
 }
