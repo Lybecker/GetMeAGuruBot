@@ -2,7 +2,7 @@
 
 namespace GetMeAGuru
 {
-    internal class Guru
+    public class Guru
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }

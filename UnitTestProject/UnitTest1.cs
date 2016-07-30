@@ -18,7 +18,7 @@ namespace UnitTestProject
         {
             var client = new SearchClient();
 
-            var result = client.Search(string.Empty, "azure", "Redmond", string.Empty);
+            var result = client.Search("azure");
         }
 
         [TestMethod]
