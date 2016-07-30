@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿/*
+using Newtonsoft.Json;
 
 namespace GetMeAGuru
 {
@@ -40,3 +41,4 @@ public class resources
 {
     public string url { get; set; }
 }
+*/

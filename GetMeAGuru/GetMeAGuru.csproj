@@ -158,6 +158,7 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\gurubot %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\gurubot %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\gurubot %284%29.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
