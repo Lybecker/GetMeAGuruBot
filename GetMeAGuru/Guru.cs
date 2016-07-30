@@ -1,42 +1,32 @@
-﻿using Newtonsoft.Json;
-
-namespace GetMeAGuru
+﻿public class Guru
 {
-    internal class Guru
-    {
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
-        public string alias { get; set; }
-        public expertises[] topic { get; set; }
-        public engagements[] session { get; set; }
-        public override string ToString()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
-    }
-
-    public class expertises
-    {
-        public string title { get; set; }
-    }
+    public string id { get; set; }
+    public string alias { get; set; }
+    public Expertise expertise { get; set; }
+    public Engagment[] engagments { get; set; }
 }
-public class engagements
-    {
-        public string title { get; set; }
-        public string description { get; set; }
-        public string location { get; set; }
-        public string company { get; set; }
-        public string date { get; set; }
-        public tech[] domain { get; set; }
-        public resources[] url { get; set; }
-    }
 
-    public class tech
-    {
-        public string domain { get; set; }
-    }
+public class Expertise
+{
+    public int WindowsDevelopment { get; set; }
+    public int Office365 { get; set; }
+    public int Azure { get; set; }
+    public int DevOps { get; set; }
+    public int GameDev { get; set; }
+    public int WebDev { get; set; }
+    public int MachineLearning { get; set; }
+    public int IOT { get; set; }
+    public int Media { get; set; }
+    public int HighScaleData { get; set; }
+}
 
-    public class resources
-    {
-        public string url { get; set; }
-    }
+public class Engagment
+{
+    public string title { get; set; }
+    public string description { get; set; }
+    public string location { get; set; }
+    public string company { get; set; }
+    public string date { get; set; }
+    public string[] tech { get; set; }
+    public string[] resources { get; set; }
+}

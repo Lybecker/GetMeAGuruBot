@@ -20,5 +20,12 @@ namespace UnitTestProject
 
             var result = client.Search(string.Empty, "azure", "Redmond", string.Empty);
         }
+
+        [TestMethod]
+        public void WriteToDocDB()
+        {
+            var client = new Ingestion();
+            client.PushDocument();            
+        }
     }
 }
