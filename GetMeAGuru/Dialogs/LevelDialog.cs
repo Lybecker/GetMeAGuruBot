@@ -38,8 +38,27 @@ namespace GetMeAGuru.Dialogs
         public virtual async Task ActionSelected(IDialogContext context, IAwaitable<IMessageActivity> argument)
         {
             var message = await argument;
-         //   await context.PostAsync(message.Text);
-            context.Done(message.Text);
+            switch (message.Text)
+            {
+                case "L1":
+                    context.Done(message.Text);
+                    break;
+                case "L2":
+                    context.Done(message.Text);
+                    break;
+                case "L3":
+                    context.Done(message.Text);
+                    break;
+                case "L4":
+                    context.Done(message.Text);
+                    break;
+                default:
+                    {
+                        await context.PostAsync("Please select an available level");
+                        await SelectPath(context);
+                    }
+                    break;
+            }
         }
     }
 }
