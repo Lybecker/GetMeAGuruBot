@@ -7,6 +7,9 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using Microsoft.Bot.Builder.Dialogs;
+using Bot = Microsoft.Bot.Connector;
+using GetMeAGuru.Dialogs;
 
 namespace GetMeAGuru
 {
@@ -22,17 +25,21 @@ namespace GetMeAGuru
             if (activity.Type == ActivityTypes.Message)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-                // calculate something for us to return
-                int length = (activity.Text ?? string.Empty).Length;
 
-                // return our reply to the user
-                Activity reply = activity.CreateReply($"You sent {activity.Text} which was {length} characters");
-                await connector.Conversations.ReplyToActivityAsync(reply);
+                //if user types reset, remove the saved state
+                if (activity.Text.Equals("reset", StringComparison.OrdinalIgnoreCase))
+                {
+                    BotState state = activity.GetStateClient().BotState as BotState;
+                    state.DeleteStateForUser(activity.ChannelId, activity.From.Id);
+                }
+
+                await Conversation.SendAsync(activity, () => new IntroDialogChain());
             }
             else
             {
                 HandleSystemMessage(activity);
             }
+            
             var response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
