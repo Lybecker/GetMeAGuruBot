@@ -20,5 +20,16 @@ namespace UnitTestProject
 
             var result = client.Search("azure");
         }
+
+        [TestMethod, Ignore]
+        public void AddSearchData()
+        {
+            var client = new SearchClient();
+
+            client.Add(new SearchGuru() {
+                alias = "stmich",
+                techs = new[] { "Web", "Azure" }
+            });
+        }
     }
 }
