@@ -14,20 +14,20 @@ namespace GetMeAGuru
 
         //tech, location/area, level
 
-        public IList<Engagement> Search(string searchText, string tech, string location, string level)
+        public IList<Guru> Search(string searchText)
         {
             SearchServiceClient serviceClient = new SearchServiceClient(searchServiceName, new SearchCredentials(readonlyApiKey));
 
-            var indexClient = serviceClient.Indexes.GetClient("engagements");
+            var indexClient = serviceClient.Indexes.GetClient("gurus");
 
             var sp = new SearchParameters();
 
-            if (!String.IsNullOrEmpty(tech))
-            {
-                sp.Filter = "tech/any(t: t eq '" + tech + "') and location eq '" + location+ "'"; // and level eg '{level}'";
-            }
+            //if (!String.IsNullOrEmpty(tech))
+            //{
+            //    sp.Filter = "engagments/tech/any(t: t eq '" + tech + "')"; // and location eq '" + location+ "'"; // and level eg '{level}'";
+            //}
 
-            DocumentSearchResult<Engagement> response = indexClient.Documents.Search<Engagement>(searchText, sp);
+            DocumentSearchResult<Guru> response = indexClient.Documents.Search<Guru>(searchText, sp);
             //foreach (SearchResult<Engagement> result in response.Results)
             //{
             //    Console.WriteLine(result.Document);
